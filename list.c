@@ -148,9 +148,10 @@ int findItem(struct Performance * performance, struct Node ** list_ptr, int (*co
             return(i);
         }
         
-        next(performance,temp_ptr);
+        temp_ptr =  (next(performance,temp_ptr));
         i++;
     }
+
     free(listItem);
     return(-1);
 }
