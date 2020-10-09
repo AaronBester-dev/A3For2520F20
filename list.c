@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "list.h"
 
 struct Performance * newPerformance(){
-    if((struct Performance * perf = malloc(sizeof(struct Performance)) == NULL){
+    struct Performance * perf = malloc(sizeof(struct Performance));
+    if(perf == NULL){
         fprintf(stderr,"Error: Couldn't allocate memory for performance structure.\n");
         exit(1);
     }
@@ -15,12 +17,13 @@ struct Performance * newPerformance(){
 }
 
 void push(struct Performance * performance, struct Node ** list_ptr, void * src, unsigned int width){
-    if(struct Node * newNode = malloc(sizeof(struct Node)) == NULL){
+    struct Node * newNode = malloc(sizeof(struct Node));
+    if(newNode == NULL){
         fprintf(stderr,"Error: Couldn't allocate memory for node structure.\n");
         exit(1);
     }
-
-    if((newNode->data = malloc(sizeof(char) * width) == NULL){
+    newNode->data = malloc(sizeof(char) * width);
+    if(newNode->data == NULL){
         fprintf(stderr,"Error: Couldn't allocate memory for data in a node.\n");
         exit(1);
     }
@@ -31,7 +34,9 @@ void push(struct Performance * performance, struct Node ** list_ptr, void * src,
 }
 
 void readHead(struct Performance * performance, struct Node ** list_ptr, void * dest, unsigned int width){
-    if(*list_ptr == NULL{
+    
+    struct Node * temp_ptr = *(list_ptr);
+    if(temp_ptr == NULL){
         fprintf(stderr,"Error: Linked list is empty.\n");
         exit(1);
     }
@@ -42,8 +47,9 @@ void readHead(struct Performance * performance, struct Node ** list_ptr, void * 
 
 }
 
-void pop(struct Performance * Performance, struct Node ** list_ptr, void * dest, unsigned int width){
-    if(*list_ptr == NULL{
+void pop(struct Performance * performance, struct Node ** list_ptr, void * dest, unsigned int width){
+    struct Node * temp_ptr = *(list_ptr);
+    if(temp_ptr == NULL){
         fprintf(stderr,"Error: Linked list is empty.\n");
         exit(1);
     }
@@ -58,17 +64,19 @@ void pop(struct Performance * Performance, struct Node ** list_ptr, void * dest,
 }
 
 struct Node ** next(struct Performance * performance, struct Node ** list_ptr){
-    if(*(list_ptr) == NULL{
+    struct Node * temp_ptr = *(list_ptr);
+    if(temp_ptr == NULL){
         fprintf(stderr,"Error: Linked list is empty.\n");
         exit(1);
     }
 
     performance->reads++;
-    return((*(list_ptr)->next));
+    return(&(temp_ptr->next));
 }
 
 int isEmpty(struct Performance * performance, struct Node ** list_ptr){
-     if(*(list_ptr) == NULL{
+    struct Node * temp_ptr = *(list_ptr);
+     if(temp_ptr == NULL){
         return(1);
     }
     else{
@@ -92,10 +100,57 @@ void readItem(struct Performance * performance, struct Node ** list_ptr, unsigne
 }
 
 void appendItem(struct Performance * performance, struct Node ** list_ptr, void * src, unsigned int width ){
-    
-    
-    
-    while(isEmpty(performance,list_ptr) == 0){
-        
+    struct Node ** temp_ptr = list_ptr;
+
+    while(isEmpty(performance,temp_ptr) == 0){
+        temp_ptr = (next(performance,temp_ptr));        
     }
+    push(performance,temp_ptr,src,width);
+}
+
+void insertItem(struct Performance * performance, struct Node ** list_ptr, unsigned int index, void * src, unsigned int width){
+    int i = 0;
+    struct Node ** temp_ptr = list_ptr;
+
+    for(i = 0; i < index; i++){
+        temp_ptr = (next(performance,temp_ptr));
+    }
+
+    push(performance,temp_ptr,src,width);
+}
+
+void prependItem(struct Performance * performance, struct Node ** list_ptr, void * src, unsigned int width){
+    insertItem(performance,list_ptr,0,src,width);
+}
+
+void deleteItem(struct Performance * performance, struct Node ** list_ptr, unsigned int index){
+    int i = 0;
+    struct Node ** temp_ptr = list_ptr;
+
+    for(i = 0; i < index; i++){
+        temp_ptr = (next(performance,temp_ptr));
+    }
+
+    pop(performance,temp_ptr,NULL,0);
+}
+
+int findItem(struct Performance * performance, struct Node ** list_ptr, int (*compar)(const void *, const void *), void * target, unsigned int width){
+    int i = 0;
+    int result = 0;
+    struct Node ** temp_ptr = list_ptr;
+    void * listItem = malloc(sizeof(char) * width);
+
+    while(isEmpty(performance,temp_ptr) == 0){
+        readHead(performance,temp_ptr,listItem,width);
+        result = (*compar)(listItem,target);
+        if(result == 0){
+            free(listItem);
+            return(i);
+        }
+        
+        next(performance,temp_ptr);
+        i++;
+    }
+    free(listItem);
+    return(-1);
 }
