@@ -3,6 +3,8 @@
 #include <string.h>
 #include "list.h"
 
+
+/*Creates a new performance structure*/
 struct Performance * newPerformance(){
     struct Performance * perf = malloc(sizeof(struct Performance));
     if(perf == NULL){
@@ -16,6 +18,7 @@ struct Performance * newPerformance(){
     return(perf);
 }
 
+/*Adds a new node structure to the beginning of the linked list and changes the head to the newly added node*/
 void push(struct Performance * performance, struct Node ** list_ptr, void * src, unsigned int width){
     struct Node * newNode = malloc(sizeof(struct Node));
     if(newNode == NULL){
@@ -33,6 +36,7 @@ void push(struct Performance * performance, struct Node ** list_ptr, void * src,
     *(list_ptr) = newNode;
 }
 
+/*Reads the data located in the head node of the structure*/
 void readHead(struct Performance * performance, struct Node ** list_ptr, void * dest, unsigned int width){
     
     struct Node * temp_ptr = *(list_ptr);
@@ -47,6 +51,7 @@ void readHead(struct Performance * performance, struct Node ** list_ptr, void * 
 
 }
 
+/*Removes and frees the head node from the linked list*/
 void pop(struct Performance * performance, struct Node ** list_ptr, void * dest, unsigned int width){
     struct Node * temp_ptr = *(list_ptr);
     if(temp_ptr == NULL){
@@ -63,6 +68,7 @@ void pop(struct Performance * performance, struct Node ** list_ptr, void * dest,
     performance->reads++;
 }
 
+/*Returns the next node in the linked list from the node pointed to by the given double pointer*/
 struct Node ** next(struct Performance * performance, struct Node ** list_ptr){
     struct Node * temp_ptr = *(list_ptr);
     if(temp_ptr == NULL){
@@ -74,6 +80,7 @@ struct Node ** next(struct Performance * performance, struct Node ** list_ptr){
     return(&(temp_ptr->next));
 }
 
+/*Returns 1 if linked list is empty and 0 if linked list is not empty*/
 int isEmpty(struct Performance * performance, struct Node ** list_ptr){
     struct Node * temp_ptr = *(list_ptr);
      if(temp_ptr == NULL){
@@ -83,13 +90,13 @@ int isEmpty(struct Performance * performance, struct Node ** list_ptr){
         return(0);
     }
 }
-
+/*Frees the entirety of the linked list*/
 void freeList(struct Performance * performance, struct Node ** list_ptr){
     while(isEmpty(performance,list_ptr) == 0){
         pop(performance,list_ptr,NULL,0);
     }
 }
-
+/*Reads the data located in the node that is wanted by the user*/
 void readItem(struct Performance * performance, struct Node ** list_ptr, unsigned int index, void * dest, unsigned int width){
     int i = 0;
     struct Node ** temp_ptr = list_ptr;
@@ -98,7 +105,7 @@ void readItem(struct Performance * performance, struct Node ** list_ptr, unsigne
     }
     readHead(performance,temp_ptr,dest,width);
 }
-
+/*Adds a node to the linked list at the end of the list*/
 void appendItem(struct Performance * performance, struct Node ** list_ptr, void * src, unsigned int width ){
     struct Node ** temp_ptr = list_ptr;
 
@@ -107,7 +114,7 @@ void appendItem(struct Performance * performance, struct Node ** list_ptr, void 
     }
     push(performance,temp_ptr,src,width);
 }
-
+/*Inserts a new node in the linked list after the node pointed to by the double pointer given to the function*/
 void insertItem(struct Performance * performance, struct Node ** list_ptr, unsigned int index, void * src, unsigned int width){
     int i = 0;
     struct Node ** temp_ptr = list_ptr;
@@ -118,11 +125,12 @@ void insertItem(struct Performance * performance, struct Node ** list_ptr, unsig
 
     push(performance,temp_ptr,src,width);
 }
-
+/*Adds a item to the head of the linked list*/
 void prependItem(struct Performance * performance, struct Node ** list_ptr, void * src, unsigned int width){
     insertItem(performance,list_ptr,0,src,width);
 }
 
+/*Deletes and frees a item in the linked list that is pointed to by the double pointer given*/
 void deleteItem(struct Performance * performance, struct Node ** list_ptr, unsigned int index){
     int i = 0;
     struct Node ** temp_ptr = list_ptr;
@@ -134,6 +142,8 @@ void deleteItem(struct Performance * performance, struct Node ** list_ptr, unsig
     pop(performance,temp_ptr,NULL,0);
 }
 
+/*Checks every node in the linked list to see if it contains the same data as given by the user. 
+If data is found in the linked list it returns the index of the node it was found in otherwise, it returns -1*/
 int findItem(struct Performance * performance, struct Node ** list_ptr, int (*compar)(const void *, const void *), void * target, unsigned int width){
     int i = 0;
     int result = 0;
