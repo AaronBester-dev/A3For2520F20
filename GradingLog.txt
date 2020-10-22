@@ -1,0 +1,87 @@
+Found list.c
+Compiling
+Found list.o
+Compilation succeeded
+Compiling and linking gradeA3_newPerformance
+Found gradeA3_newPerformance
+Compilation succeeded
+newPerformance passed
+Compiling and linking gradeA3_push
+Found gradeA3_push
+Compilation succeeded
+push failed
+  'Esmay Meyers\n0:1:0:0\n'!='Esmay Meyers\n1:1:1:1\n'
+push failed
+  'Zaki Mcfarland\nHamish Wagner\nEsmay Meyers\n0:3:0:0\n'!='Zaki Mcfarland\nHamish Wagner\nEsmay Meyers\n3:3:3:3\n'
+Compiling and linking gradeA3_readHead
+Found gradeA3_readHead
+Compilation succeeded
+readHead failed
+  'Marwan Herrera\n0:11:0:0\n'!='Marwan Herrera\n10:11:10:10\n'
+Compiling and linking gradeA3_pop
+Found gradeA3_pop
+Compilation succeeded
+pop failed
+  'POPPED:\nMarwan Herrera\nLIST:\nAshton Noel\nCallum Atherton\nTara Jennings\nSachin Leonard\nPascal Reeve\nShreya Mcdowell\nZaki Mcfarland\nHamish Wagner\nEsmay Meyers\n0:10:0:0\n'!='POPPED:\nMarwan Herrera\nLIST:\nAshton Noel\nCallum Atherton\nTara Jennings\nSachin Leonard\nPascal Reeve\nShreya Mcdowell\nZaki Mcfarland\nHamish Wagner\nEsmay Meyers\n10:10:10:10\n'
+pop failed
+  'POPPED:\nMarwan Herrera\nAshton Noel\nLIST:\nCallum Atherton\nTara Jennings\nSachin Leonard\nPascal Reeve\nShreya Mcdowell\nZaki Mcfarland\nHamish Wagner\nEsmay Meyers\n0:10:0:0\n'!='POPPED:\nMarwan Herrera\nAshton Noel\nLIST:\nCallum Atherton\nTara Jennings\nSachin Leonard\nPascal Reeve\nShreya Mcdowell\nZaki Mcfarland\nHamish Wagner\nEsmay Meyers\n10:10:10:10\n'
+Compiling and linking gradeA3_next
+Found gradeA3_next
+Compilation succeeded
+next failed
+  'Callum Atherton\n0:12:0:0\n'!='Callum Atherton\n10:12:10:10\n'
+Compiling and linking gradeA3_isEmpty
+Found gradeA3_isEmpty
+Compilation succeeded
+isEmpty failed
+  'Empty\nNot Empty\n0:10:0:0\n'!='Empty\nNot Empty\n10:10:10:10\n'
+Compiling and linking gradeA3_freeList
+Found gradeA3_freeList
+Compilation succeeded
+freeList passed
+freeList failed
+  '0:1000:0:0\n'!='1000:1000:1000:1000\n'
+Compiling and linking gradeA3_readItem
+Found gradeA3_readItem
+Compilation succeeded
+readItem failed
+  '101345\n0:10005:0:0\n'!='101345\n10000:10005:10000:10000\n'
+Compiling and linking gradeA3_appendItem
+Found gradeA3_appendItem
+Compilation succeeded
+appendItem failed
+  'Martin Fresca\nChino Dookie\nDominic Toledo\nDavid Doodleboop\n0:10:0:0\n'!='Martin Fresca\nChino Dookie\nDominic Toledo\nDavid Doodleboop\n4:10:4:4\n'
+Compiling and linking gradeA3_insertItem
+Found gradeA3_insertItem
+Compilation succeeded
+insertItem failed
+  'Mahek Holman\nDavid Doodleboop\nDominic Toledo\nChino Dookie\nMartin Fresca\n0:5:0:0\n'!='Mahek Holman\nDavid Doodleboop\nDominic Toledo\nChino Dookie\nMartin Fresca\n5:5:5:5\n'
+insertItem failed
+  'David Doodleboop\nDominic Toledo\nMahek Holman\nChino Dookie\nMartin Fresca\n0:7:0:0\n'!='David Doodleboop\nDominic Toledo\nMahek Holman\nChino Dookie\nMartin Fresca\n5:7:5:5\n'
+Compiling and linking gradeA3_prependItem
+Found gradeA3_prependItem
+Compilation succeeded
+prependItem passed
+Compiling and linking gradeA3_deleteItem
+Found gradeA3_deleteItem
+Compilation succeeded
+deleteItem failed
+  'David Doodleboop\nChino Dookie\nMartin Fresca\n0:5:0:0\n'!='David Doodleboop\nChino Dookie\nMartin Fresca\n4:5:4:4\n'
+Compiling and linking gradeA3_findItem
+Found gradeA3_findItem
+Compilation succeeded
+findItem failed
+  'Tokyo 35.689700 139.692200 Japan 37977000\n98\n0:296:0:0\n'!='Tokyo 35.689700 139.692200 Japan 37977000\n98\n99:296:99:99\n'
+findItem failed
+  'Paris 48.856600 2.352200 France 11020000\n65\n0:197:0:0\n'!='Paris 48.856600 2.352200 France 11020000\n65\n99:197:99:99\n'
+findItem failed
+  'Santiago -33.450000 -70.666700 Chile 7007000\n20\n0:62:0:0\n'!='Santiago -33.450000 -70.666700 Chile 7007000\n20\n99:62:99:99\n'
+findItem failed
+  'Yichun 27.804100 114.383000 China 6048700\n0\n0:2:0:0\n'!='Yichun 27.804100 114.383000 China 6048700\n0\n99:2:99:99\n'
+findItem failed
+  '-1\n0:198:0:0\n'!='-1\n99:198:99:99\n'
+Found makefile
+Correct options
+Comments
+Indentation levels are: ['', '    ', '     ', '        ', '            ']
+Assignment submitted by Aaron Bester <bestera@uoguelph.ca> at: Wed Oct 14 21:12:51 2020
