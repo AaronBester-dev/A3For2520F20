@@ -1,0 +1,27 @@
+ 1                                     newPerformance: 1
+ 2                                               push: 0
+ 3                                               push: 0
+ 4                                           readHead: 0
+ 5                                                pop: 0
+ 6                                                pop: 0
+ 7                                               next: 0
+ 8                                            isEmpty: 0
+ 9                                           freeList: 1
+10                                           freeList: 0
+11                                           readItem: 0
+12                                         appendItem: 0
+13                                         insertItem: 0
+14                                         insertItem: 0
+15                                        prependItem: 1
+16                                         deleteItem: 0
+17                                           findItem: 0
+18                                           findItem: 0
+19                                           findItem: 0
+20                                           findItem: 0
+21                                           findItem: 0
+22                                    makefile exists: 1
+23                           correct makefile options: 1
+24                                  code has comments: 1
+25                                   code is indented: 1
+========================================================
+Total:                                              7/25
