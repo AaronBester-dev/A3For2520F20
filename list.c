@@ -34,6 +34,9 @@ void push(struct Performance * performance, struct Node ** list_ptr, void * src,
     memcpy(newNode->data,src,width);
     newNode->next = *(list_ptr);
     *(list_ptr) = newNode;
+    performance->writes++;
+    performance->mallocs++;
+    
 }
 
 /*Reads the data located in the head node of the structure*/
